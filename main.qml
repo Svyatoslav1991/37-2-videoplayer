@@ -13,15 +13,18 @@ Window {
 
     Video{
         id: video
-        source: "src:/video/video/JohnWick4.mp4"
+        source: "qrc:/video/video/Deadpool3.mp4"
         width: parent.width
         height:  parent.height - controlPanel.height
         autoPlay: true
         fillMode:  VideoOutput.PreserveAspectFit
 
-        onDurationChanged: {
-            slider.maximumValue = duration
+        onPositionChanged: {
+            if (!slider.pressed) {
+                slider.value = position
+            }
         }
+
 
         onErrorChanged: {
             console.error("Video error: ", errorString)
@@ -42,10 +45,10 @@ Window {
             anchors.horizontalCenter: parent.horizontalCenter
 
             Button { text: "▶️"; onClicked: video.play() }
-            Button { text: "⏸️ Pause"; onClicked: video.pause() }
-            Button { text: "⏹ Stop"; onClicked: video.stop() }
-            Button { text: "⏪️ Rewind"; onClicked: video.seek(video.position - 5000) }
-            Button { text: "⏩️ Forward"; onClicked: video.seek(video.position + 5000) }
+            Button { text: "⏸️"; onClicked: video.pause() }
+            Button { text: "⏹"; onClicked: video.stop() }
+            Button { text: "⏪️"; onClicked: video.seek(video.position - 5000) }
+            Button { text: "⏩️"; onClicked: video.seek(video.position + 5000) }
         }
 
         Slider {
@@ -54,7 +57,10 @@ Window {
             height:controlPanel.height * 0.3
             anchors.bottom: parent.bottom
             anchors.horizontalCenter: parent.horizontalCenter
+            from: 0
+            to: video.duration
             value: video.position
+            stepSize: 1000
 
             onMoved: video.seek(value)
         }

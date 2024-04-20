@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/video">
+        <file>video/Deadpool3.mp4</file>
+    </qresource>
+    <qresource prefix="/icons">
+        <file>icons/video_player.png</file>
+    </qresource>
+</RCC>
