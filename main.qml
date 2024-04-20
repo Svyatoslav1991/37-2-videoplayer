@@ -42,10 +42,10 @@ Window {
             anchors.horizontalCenter: parent.horizontalCenter
 
             Button { text: "▶️"; onClicked: video.play() }
-            Button { text: "⏸️ Pause"; onClicked: video.pause() }
-            Button { text: "⏹ Stop"; onClicked: video.stop() }
-            Button { text: "⏪️ Rewind"; onClicked: video.seek(video.position - 5000) }
-            Button { text: "⏩️ Forward"; onClicked: video.seek(video.position + 5000) }
+            Button { text: "⏸️"; onClicked: video.pause() }
+            Button { text: "⏹"; onClicked: video.stop() }
+            Button { text: "⏪️"; onClicked: video.seek(video.position - 5000) }
+            Button { text: "⏩️"; onClicked: video.seek(video.position + 5000) }
         }
 
         Slider {
